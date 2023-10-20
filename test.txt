@@ -1,0 +1,167 @@
+#!/bin/bash
+read -p "Enter row" row
+for((i=1;i<=row;i++))
+do
+for((j=1;j<=i;j++))
+do
+	echo -n " *"
+done
+echo 
+done
+echo "-------------------"
+for((i=1;i<=row;i++))
+do
+for((j=1;j<=i;j++))
+do
+	echo -n " $i"
+done
+echo 
+done
+echo "-------------------"
+for((i=1;i<=row;i++))
+do
+for((j=1;j<=i;j++))
+do
+	echo -n " $j"
+done
+echo 
+done
+echo "-------------------"
+echo "-------------------"
+for((i=row;i>=1;i--))
+do
+for((j=1;j<=i;j++))
+do 
+	echo -n " *"
+done
+echo
+done
+echo "-------------------"
+for((i=row;i>=1;i--))
+do
+for((j=1;j<=i;j++))
+do 
+	echo -n " $i"
+done
+echo
+done
+echo "-------------------"
+for((i=row;i>=1;i--))
+do
+for((j=1;j<=i;j++))
+do 
+	echo -n " $j"
+done
+echo
+done
+
+echo "-------------------"
+n=1
+for((i=1;i<=row;i++))
+do
+for((j=1;j<=i;j++))
+do 
+	echo -n " $n"
+	n=$((n+1))
+done
+echo
+done
+echo "-------------------"
+n=15
+for((i=row;i>=1;i--))
+do
+for((j=1;j<=i;j++))
+do 
+	echo -n " $n"
+	n=$((n-1))
+done
+echo
+done
+echo "-------------------"
+row=5
+for((i=1;i<=row;i++))
+do
+for((j=1;j<=row-i;j++))
+do 
+	echo -n " "
+done
+for((j=1;j<=2*i-1;j++))
+do
+	echo -n "*"
+done
+echo " "
+done
+for((i=4;i>0;i--))
+do
+for((j=1;j<=row-i;j++))
+do 
+	echo -n " "
+done
+for((j=1;j<=2*i-1;j++))
+do
+	echo -n "*"
+done
+echo " "
+done
+
+
+----------------------------------------------------------------
+
+
+
+#!/bin/bash
+
+echo "1.create file"
+echo "2.create dir"
+echo "3.delete file"
+echo "4.delete dir"
+echo "5.current date & time"
+echo "6.current directory"
+echo "7.current user"
+echo "8.copy file"
+echo "9.move file"
+echo "10.total file"
+echo "11.terminal file"
+ch=0
+while [ $ch -lt 11 ]
+do
+read -p "Enter your choice:" ch
+case $ch in
+	1) read -p "Enter name of file:" file
+		touch $file
+		;;
+        2) read -p "Enter name of dir:" dir
+		mkdir $dir
+		;;
+	3) read -p "Enter name of file you want to delete:" file
+		rm $file
+		;;
+	4) read -p "Enter name of dir which you want to remove:" dir
+		rmdir $dir
+		;;
+	5) echo "cuttent date and time is:" $(date)
+		
+		;;
+	
+	6) echo "present dir:" $(pwd)
+		
+		;;
+	7) echo "current user:" $(whoami) 
+		
+		;;
+	8) echo "hello">pqr.txt
+		mv pqr.txt pqr1.txt
+		echo "Succesfull"
+		;;
+	9) echo "hello">abc.txt
+		cp abc.txt abc1.txt
+		echo "Succesfull"
+		;;
+	10) echo "total file:" $(ls -l)
+		;;
+	11) echo "current terminal:" $(tty)
+		;;
+	*)
+		;;
+esac
+done
